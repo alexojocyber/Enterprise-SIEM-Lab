@@ -91,6 +91,9 @@ The following suspicious indicators were identified:
 
 <img width="1852" height="962" alt="failed-login-logs" src="https://github.com/user-attachments/assets/5a756be0-46d0-4aff-973c-fd2e39aa9f9f" />
 
+### Failed Login Detection
+
+<img width="1852" height="844" alt="authentication-failure-timeline" src="https://github.com/user-attachments/assets/fcb552a1-faee-44e0-be27-e6d9040b1fd8" />
 
 
 ## 👤 Author
