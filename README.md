@@ -86,14 +86,16 @@ This pattern is commonly associated with **brute-force login attacks**.
 
 # 🔍 Investigation Timeline
 
-## Step 1 — Monitor Authentication Logs
+## 🔍 Investigation Timeline
+
+### Step 1 — Monitor Authentication Logs
 
 Authentication logs were monitored in real-time using:
 
 ```bash
 sudo tail -f /var/log/auth.log
 
-## Step 2 — Identify Failed Login Attempts
+Step 2 — Identify Failed Login Attempts
 
 Failed login attempts were extracted using:
 
