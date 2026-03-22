@@ -73,12 +73,16 @@ This pattern indicates a possible brute force attack.
 
 ## 🚨 Indicators of Compromise (IOCs)
 
-The following suspicious indicators were identified:
+The following suspicious indicators were identified during the investigation:
 
 - Targeted user account: **testuser**
 - Number of failed login attempts: **12**
-- Activity type: Multiple authentication failures
-- Possible attack type: Brute Force Attempt
+- Log source: `/var/log/auth.log`
+- Activity observed: Multiple authentication failures
+- Likely attack type: **Brute Force Attempt**
+
+These indicators suggest repeated unauthorized login attempts targeting a specific user account.
+
 
 ## 📸 Evidence
 
