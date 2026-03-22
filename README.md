@@ -75,12 +75,12 @@ This pattern indicates a possible brute force attack.
 
 ### Failed Login Attempt
 
-![Failed Login Attempt](<img width="556" height="644" alt="attack-attempt (Copy)" src="https://github.com/user-attachments/assets/1361e195-8230-4df2-a3c1-51d677b91392" />
-)
+<img width="556" height="644" alt="attack-attempt (Copy)" src="https://github.com/user-attachments/assets/1361e195-8230-4df2-a3c1-51d677b91392" />
+
 
 ### Authentication Log Output
 
-![Failed Login Logs](<img width="1852" height="962" alt="failed-login-logs" src="https://github.com/user-attachments/assets/5a756be0-46d0-4aff-973c-fd2e39aa9f9f" />)
+<img width="1852" height="962" alt="failed-login-logs" src="https://github.com/user-attachments/assets/5a756be0-46d0-4aff-973c-fd2e39aa9f9f" />
 
 
 
