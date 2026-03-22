@@ -43,7 +43,7 @@ This lab simulates how a SOC analyst would:
 ## 🛠️ Technologies
 - Wazuh SIEM  
 - Ubuntu Server 22.04  
-- Windows 10  
+- Windows 11 Pro  
 - VMware Workstation  
 - MITRE ATT&CK Framework  
 
