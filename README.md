@@ -95,8 +95,8 @@ Authentication logs were monitored in real-time using:
 ```bash
 sudo tail -f /var/log/auth.log
 
-Step 2 — Identify Failed Login Attempts
-
+### Step 2 - Identify Failed Login Attempts
+...
 Failed login attempts were extracted using:
 
 sudo cat /var/log/auth.log | grep "authentication failure"
@@ -104,18 +104,15 @@ sudo cat /var/log/auth.log | grep "authentication failure"
 A total of:
 
 12 failed login attempts
-
 were recorded during the attack simulation.
 
-Step 3 — Identify Targeted User
-
+### Step 3 - Identify Targeted User
 The affected user account was identified using:
 
-sudo cat /var/log/auth.log | grep testuser
+sudo cat /var/log/auth.1og | grep testuser
+Repeated authentication failures confirmed that the testuser acc : was being targeted.
 
-Repeated authentication failures confirmed that the testuser account was being targeted.
-
-🚨 Indicators of Compromise (IOCs)
+# 🚨 Indicators of Compromise (IOCs)
 
 The following suspicious indicators were identified:
 	•	Targeted User: testuser
@@ -126,7 +123,7 @@ The following suspicious indicators were identified:
 
 These indicators confirmed repeated unauthorized login attempts.
 
-🎯 MITRE ATT&CK Mapping
+# 🎯 MITRE ATT&CK Mapping
 Tactic
 Technique
 Description
@@ -134,7 +131,7 @@ Credential Access
 T1110 — Brute Force
 Repeated password attempts used to gain unautho
 
-🔒 Response & Mitigation
+# 🔒 Response & Mitigation
 
 To prevent brute-force attacks, account lockout protection was implemented using PAM faillock.
 
@@ -185,7 +182,7 @@ Permission denied
 
 Account Lockout Confirmation
 
-🧠 Lessons Learned
+# 🧠 Lessons Learned
 
 This lab provided valuable cybersecurity insights:
 	•	Repeated authentication failures often indicate brute-force attacks.
@@ -196,7 +193,7 @@ This lab provided valuable cybersecurity insights:
 
 ⸻
 
-📋 Project Status
+# 📋 Project Status
 	•	Created test user account
 	•	Simulated brute-force login attempts
 	•	Monitored authentication logs
@@ -208,7 +205,7 @@ This lab provided valuable cybersecurity insights:
 
 ⸻
 
-🚀 Future Improvements
+# 🚀 Future Improvements
 
 Planned enhancements include:
 	•	Integrating Wazuh SIEM
