@@ -83,6 +83,30 @@ The following suspicious indicators were identified during the investigation:
 
 These indicators suggest repeated unauthorized login attempts targeting a specific user account.
 
+## 🔒 Response & Mitigation
+
+To prevent brute-force attacks, account lockout protection was configured using PAM faillock.
+
+### Configuration Applied:
+
+- deny = 3  
+- fail_interval = 900 seconds  
+- unlock_time = 600 seconds  
+
+This configuration ensures accounts are locked after 3 failed login attempts.
+
+### Validation:
+
+Multiple failed login attempts were performed using:
+
+su testuser
+
+After exceeding the failure threshold, the account was locked and further attempts resulted in:
+
+Permission denied
+
+This confirms the lockout protection is functioning correctly.
+
 
 ## 📸 Evidence
 
