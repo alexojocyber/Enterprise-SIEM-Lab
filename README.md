@@ -1,112 +1,170 @@
 # 🚨 Enterprise SIEM Lab: Brute Force Detection & Investigation (SOC Simulation)
 
-## 🎯 Project Overview
-This project focuses on building a production-style Security Information and Event Management (SIEM) lab using Wazuh to simulate real-world SOC operations.
+---
 
-The goal is to demonstrate practical cybersecurity skills including:
-- Threat detection  
-- Log analysis  
-- Incident investigation  
-- Security monitoring  
+# 🎯 Project Overview
+
+This project simulates a real-world Security Operations Center (SOC) investigation using Linux authentication logs to detect and respond to a brute-force attack.
+
+The objective of this lab is to demonstrate hands-on cybersecurity skills including:
+
+- Threat detection
+- Log analysis
+- Incident investigation
+- Security monitoring
+- System hardening using PAM
+
+This project follows a structured SOC workflow from detection to response and mitigation.
 
 ---
 
-## 🧪 Scenario
-An attacker attempts to gain unauthorized access to a Linux system by performing multiple failed login attempts (brute force attack).
+# 🧪 Scenario
 
-This lab simulates how a SOC analyst would:
-- Detect suspicious login activity  
-- Investigate authentication logs  
-- Identify Indicators of Compromise (IOCs)  
-- Respond and implement mitigation controls  
+An attacker attempts to gain unauthorized access to a Linux system by performing multiple failed login attempts against a user account.
 
----
+This activity simulates a **brute-force attack**, where repeated password attempts are used to guess valid credentials.
 
-## 🏗️ Architecture
-**Lab Environment:**
-- Wazuh Manager (Ubuntu Server 22.04)
-- Windows 10 Agent
-- Ubuntu Desktop Agent
-- Log sources: authentication logs, system logs
-- Custom detection rules mapped to MITRE ATT&CK
+During this investigation, suspicious login behavior was simulated and analyzed to:
+
+- Detect authentication failures
+- Investigate login attempts
+- Identify Indicators of Compromise (IOCs)
+- Implement account lockout protection
+- Validate mitigation effectiveness
 
 ---
 
-## 📋 Project Roadmap
-- [ ] Week 1: Infrastructure deployment  
-- [ ] Week 2: Detection engineering  
-- [ ] Week 3: Incident investigation (Brute Force Attack)  
-- [ ] Week 4: Documentation & reporting  
+# 🏗️ Lab Architecture
+
+## Environment Setup
+
+- System: Ubuntu Linux
+- Log Source: `/var/log/auth.log`
+- Authentication Method: PAM (Pluggable Authentication Modules)
+- Test User Created: `testuser`
+
+Authentication logs were monitored to detect failed login attempts and simulate attacker behavior.
 
 ---
 
-## 🛠️ Technologies
-- Wazuh SIEM  
-- Ubuntu Server 22.04  
-- Windows 11 Pro  
-- VMware Workstation  
-- MITRE ATT&CK Framework  
+# 🛠️ Technologies Used
+
+- Ubuntu Linux
+- Linux Authentication Logs
+- PAM (Pluggable Authentication Modules)
+- Nano Text Editor
+- Bash Commands
+- MITRE ATT&CK Framework
 
 ---
 
-## 🎯 Learning Objectives
-- Understand how SIEM tools collect and analyze logs  
-- Detect brute force attack patterns in authentication logs  
-- Perform structured incident investigations  
-- Map findings to MITRE ATT&CK framework  
-- Apply system hardening techniques to prevent attacks  
+# 🎯 Learning Objectives
+
+This lab was designed to build practical SOC analyst skills, including:
+
+- Monitoring authentication logs
+- Detecting brute-force login attempts
+- Identifying suspicious login behavior
+- Investigating authentication failures
+- Implementing account lockout controls
+- Validating security configurations
+- Documenting incident response steps
 
 ---
 
-## 📝 Documentation
-🚧 Work in progress — detailed investigation reports and findings will be added as the lab progresses.
+# 🚨 Detection Logic
 
----
-## 🚨 Detection Logic
+Suspicious activity was defined as:
 
-Suspicious activity is detected when:
-
-- More than 3 failed login attempts
+- More than **3 failed login attempts**
 - Within a short period of time
-- Targeting the same user account
-This pattern indicates a possible brute force attack.
+- Targeting the **same user account**
 
-## 🚨 Indicators of Compromise (IOCs)
+This pattern is commonly associated with **brute-force login attacks**.
 
-The following suspicious indicators were identified during the investigation:
+---
 
-- Targeted user account: **testuser**
-- Number of failed login attempts: **12**
-- Log source: `/var/log/auth.log`
-- Activity observed: Multiple authentication failures
-- Likely attack type: **Brute Force Attempt**
+# 🔍 Investigation Timeline
 
-These indicators suggest repeated unauthorized login attempts targeting a specific user account.
+## Step 1 — Monitor Authentication Logs
 
-## 🔒 Response & Mitigation
+Authentication logs were monitored in real-time using:
 
-To prevent brute-force attacks, account lockout protection was configured using PAM faillock.
+```bash
+sudo tail -f /var/log/auth.log
 
-### Configuration Applied:
+## Step 2 — Identify Failed Login Attempts
 
-- deny = 3  
-- fail_interval = 900 seconds  
-- unlock_time = 600 seconds  
+Failed login attempts were extracted using:
 
-This configuration ensures accounts are locked after 3 failed login attempts.
+sudo cat /var/log/auth.log | grep "authentication failure"
 
-### Validation:
+A total of:
 
-Multiple failed login attempts were performed using:
+12 failed login attempts
+
+were recorded during the attack simulation.
+
+Step 3 — Identify Targeted User
+
+The affected user account was identified using:
+
+sudo cat /var/log/auth.log | grep testuser
+
+Repeated authentication failures confirmed that the testuser account was being targeted.
+
+🚨 Indicators of Compromise (IOCs)
+
+The following suspicious indicators were identified:
+	•	Targeted User: testuser
+	•	Failed Login Attempts: 12
+	•	Log Source: /var/log/auth.log
+	•	Activity: Multiple authentication failures
+	•	Attack Type: Brute Force Attempt
+
+These indicators confirmed repeated unauthorized login attempts.
+
+🎯 MITRE ATT&CK Mapping
+Tactic
+Technique
+Description
+Credential Access
+T1110 — Brute Force
+Repeated password attempts used to gain unautho
+
+🔒 Response & Mitigation
+
+To prevent brute-force attacks, account lockout protection was implemented using PAM faillock.
+
+Configuration Applied
+
+The following settings were configured in:
+
+/etc/security/faillock.conf
+
+deny = 3
+fail_interval = 900
+unlock_time = 600
+
+Configuration Explanation
+	•	deny = 3
+Locks the account after 3 failed login attempts.
+	•	fail_interval = 900
+Counts failed attempts within 15 minutes.
+	•	unlock_time = 600
+Unlocks the account after 10 minutes.
+
+These controls help protect systems from repeated login attacks.
+
+✅ Validation Testing
+
+Multiple failed login attempts were simulated using:
 
 su testuser
 
-After exceeding the failure threshold, the account was locked and further attempts resulted in:
+After exceeding the allowed number of failed attempts, further login attempts returned:
 
 Permission denied
-
-This confirms the lockout protection is functioning correctly.
-
 
 ## 📸 Evidence
 
@@ -123,8 +181,50 @@ This confirms the lockout protection is functioning correctly.
 
 <img width="1852" height="844" alt="authentication-failure-timeline" src="https://github.com/user-attachments/assets/fcb552a1-faee-44e0-be27-e6d9040b1fd8" />
 
+Account Lockout Confirmation
 
-## 👤 Author
-**Alex Ojo**  
-🔗 LinkedIn: https://linkedin.com/in/alex-o-ojo-ab9252185  
-💻 GitHub: https://github.com/alexojocyber
+🧠 Lessons Learned
+
+This lab provided valuable cybersecurity insights:
+	•	Repeated authentication failures often indicate brute-force attacks.
+	•	Monitoring authentication logs helps detect suspicious behavior early.
+	•	PAM account lockout policies significantly reduce attack risk.
+	•	Proper configuration strengthens Linux authentication security.
+	•	Structured documentation improves incident investigation clarity.
+
+⸻
+
+📋 Project Status
+	•	Created test user account
+	•	Simulated brute-force login attempts
+	•	Monitored authentication logs
+	•	Identified failed login attempts
+	•	Detected targeted user account
+	•	Implemented account lockout protection
+	•	Validated mitigation effectiveness
+	•	Documented investigation findings
+
+⸻
+
+🚀 Future Improvements
+
+Planned enhancements include:
+	•	Integrating Wazuh SIEM
+	•	Creating custom detection rules
+	•	Implementing alert notifications
+	•	Expanding attack simulation scenarios
+	•	Automating log monitoring
+
+⸻
+
+👨‍💻 Author
+
+Alex Ojo
+
+Cybersecurity Student | SOC Analyst Trainee
+
+🔗 LinkedIn:
+https://linkedin.com/in/alex-o-ojo-ab9252185
+
+🔗 GitHub:
+https://github.com/alexojocyber
