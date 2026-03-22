@@ -71,6 +71,15 @@ Suspicious activity is detected when:
 - Targeting the same user account
 This pattern indicates a possible brute force attack.
 
+## 🚨 Indicators of Compromise (IOCs)
+
+The following suspicious indicators were identified:
+
+- Targeted user account: **testuser**
+- Number of failed login attempts: **12**
+- Activity type: Multiple authentication failures
+- Possible attack type: Brute Force Attempt
+
 ## 📸 Evidence
 
 ### Failed Login Attempt
