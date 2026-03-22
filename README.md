@@ -62,6 +62,15 @@ This lab simulates how a SOC analyst would:
 🚧 Work in progress — detailed investigation reports and findings will be added as the lab progresses.
 
 ---
+## 🚨 Detection Logic
+
+Suspicious activity is detected when:
+
+- More than 3 failed login attempts
+- Within a short period of time
+- Targeting the same user account
+
+This pattern indicates a possible brute force attack.
 
 ## 👤 Author
 **Alex Ojo**  
