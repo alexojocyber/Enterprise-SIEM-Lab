@@ -127,6 +127,35 @@ These indicators confirmed repeated unauthorized login attempts.
 
 ---
 
+## ⚠️ Incident Recovery — PAM Authentication Failure
+
+During the implementation of account lockout protection using PAM faillock, 
+an incorrect configuration caused authentication failure, preventing login access.
+
+### Root Cause
+
+Misconfigured PAM faillock rules disrupted the authentication stack, 
+causing the system to reject login attempts before password validation.
+
+### Resolution Steps
+
+1. Booted into recovery mode
+2. Restored default PAM configuration:
+
+pam-auth-update
+
+3. Reinstalled PAM modules:
+
+apt-get install --reinstall libpam-modules libpam-runtime
+
+4. Reset faillock records:
+
+faillock --reset
+
+5. Rebooted system successfully
+
+System login functionality was restored.
+
 # 🎯 MITRE ATT&CK Mapping
 
 | Tactic | Technique | Description |
@@ -187,6 +216,8 @@ Permission denied
 <img width="1852" height="844" alt="authentication-failure-timeline" src="https://github.com/user-attachments/assets/fcb552a1-faee-44e0-be27-e6d9040b1fd8" />
 
 ## Account Lockout Confirmation
+
+<img width="1858" height="602" alt="account-lockout-working" src="https://github.com/user-attachments/assets/684eb406-77ba-491d-9759-ab56286f8b06" />
 
 ---
 
