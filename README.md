@@ -221,6 +221,40 @@ Permission denied
 
 ---
 
+# ⏱️ Attack Timeline
+
+| Time | Event |
+|------|------|
+| T0 | Test user account created |
+| T1 | Multiple failed login attempts initiated |
+| T2 | Authentication failures detected in logs |
+| T3 | Failed login attempts counted (12 attempts) |
+| T4 | PAM faillock configured |
+| T5 | Account lockout confirmed |
+| T6 | Incident documented |
+
+# ⚠️ Risk Impact Analysis
+
+If left unmitigated, repeated brute-force attempts could:
+
+- Lead to unauthorized account access
+- Allow privilege escalation
+- Enable data theft or system compromise
+- Disrupt normal system operations
+
+Implementing account lockout controls reduces the likelihood of successful credential attacks.
+
+
+# 🔍 Recommended Next Actions
+
+If this were a production environment, the following actions would be recommended:
+
+- Investigate source IP addresses
+- Block suspicious IP addresses
+- Enforce strong password policies
+- Implement multi-factor authentication (MFA)
+- Monitor login activity continuously
+
 # 🧠 Lessons Learned
 
 This lab provided valuable cybersecurity insights:
