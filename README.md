@@ -297,5 +297,5 @@ Planned enhancements include:
 **Alex Ojo**
 Cybersecurity Student | SOC Analyst Trainee
 
-🔗 [LinkedIn](https://linkedin.com/in/alex-o-ojo-ab9252185)
+🔗 [LinkedIn](https://www.linkedin.com/in/alex-ojo-ab9252185?)
 🔗 [GitHub](https://github.com/alexojocyber)
