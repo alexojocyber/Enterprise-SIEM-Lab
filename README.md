@@ -298,4 +298,4 @@ Planned enhancements include:
 Cybersecurity Student | SOC Analyst Trainee
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/alex-ojo-ab9252185?)
-🔗 [GitHub](https://github.com/alexojocyber)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-black)](https://github.com/alexojocyber)
